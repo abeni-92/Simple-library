@@ -6,40 +6,54 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
 	<title>simple-library</title>
 </head>
 <body>
 	<h1>Reading makes us a better person!</h1>
-	<center><a><span><i class="fa-sharp fa-solid fa-plus"></i></span> Add</a></center>
+	<center><a id="add"><span><i class="fa-sharp fa-solid fa-plus"></i></span> Add</a></center>
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<h2>Add New Book</h2>
+			<form action="#" method="get">
+				<input type="text" name="title" id="title" required placeholder="Title">
+				<input type="text" name="author" id="author" required placeholder="Author">
+				<input type="number" name="pages" id="pages" required placeholder="Pages">
+				<div class="check"><label for="readCheck">Have you read it?</label><input type="checkbox" name="readCheck" id="readCheck"></div>	
+				<button class="submit">submit</button>	
+			</form>
+		</div>	  
+	</div>
 	<section id="books">
-		<div class="book">
+	    <div class="book">
 			<p>Mere Christianity</p>
 			<p>C.S.Lewis</p>
 			<p>312</p>
-			<button>Read</button>
-			<button>remove</button>
+			<button class="read">Read</button>
+			<button class="remove">remove</button>
 		</div>
 		<div class="book">
 			<p>Mere Christianity</p>
 			<p>C.S.Lewis</p>
 			<p>312</p>
-			<button>Read</button>
-			<button>remove</button>
+			<button class="read">Read</button>
+			<button class="remove">remove</button>
 		</div>
 		<div class="book">
 			<p>Mere Christianity</p>
 			<p>C.S.Lewis</p>
 			<p>312</p>
-			<button>Read</button>
-			<button>remove</button>
+			<button class="read">Read</button>
+			<button class="remove">remove</button>
 		</div>
 		<div class="book">
 			<p>Mere Christianity</p>
 			<p>C.S.Lewis</p>
 			<p>312</p>
-			<button>Read</button>
-			<button>remove</button>
-		</div>
+			<button class="read">Read</button>
+			<button class="remove">remove</button>
+		</div> 
 	</section>
 </body>
 </html>
