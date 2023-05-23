@@ -2,12 +2,14 @@ const addBook = document.getElementById("add");
 const modal = document.querySelector(".modal");
 const books = document.getElementById("books");
 const form = document.querySelector("form");
+const year = document.getElementById("year");
 
 // modal elements
 const title = document.getElementById("title");
 const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const readCheck = document.getElementById("readCheck");
+let id = 0;
 
 let library = [];
 
@@ -36,7 +38,7 @@ form.addEventListener("submit", (e) => {
 	let authorVal = author.value;
 	let pagesVal = pages.value;
 	let readCheckVal = readCheck.checked;
-	let id = library.length; 
+	id++; 
 	
 	addToLibrary(id, titleVal, authorVal, pagesVal, readCheckVal);
 	saveLibraryToLocalStorage();
@@ -45,15 +47,37 @@ form.addEventListener("submit", (e) => {
 	displayBooks();
 });
 
-// books.addEventListener("click", e => {
-// 	let target = e.target;
+// change read or unread status and remove book
+books.addEventListener("click", (e) => {
+	const target = e.target;
 
-// 	if (target.classList.contains("read") || target.classList.contains("unread")) {
-// 		const bookDiv = target.closest(".book");
-// 		const bookId = bookDiv.dataset.bookId;
-// 		const book = library.find((book) => book.id === Number(bookId));
-// 	}
-// });
+	if (target.classList.contains("read") || target.classList.contains("unread")){	
+		const bookDiv = target.closest(".book");
+		const bookId = bookDiv.dataset.bookId;
+		const book = library.find((book) => book.id == bookId);
+		console.log(book);
+		book.readCheck == true ? book.readCheck = false : book.readCheck = true;
+		saveLibraryToLocalStorage();
+	}
+	if (target.classList.contains("remove")){
+		const bookDiv = target.closest(".book");
+		const bookId = bookDiv.dataset.bookId;
+		const libraryData = JSON.parse(localStorage.getItem("library"));
+		// const bookIndex = libraryData.findIndex((book) => book.id === bookId);
+		// if (bookIndex !== -1) {
+		// 	// Remove the book from the library array
+		// 	libraryData.splice(bookIndex, 1);
+		
+		library = libraryData.filter((book) => book.id != bookId);
+		console.log(library);
+		saveLibraryToLocalStorage();
+		// localStorage.setItem("library", JSON.stringify(libraryData));
+
+	//   }
+	}
+
+	loadLibraryFromLocalStorage();
+});
 
 class Book {
 	constructor(id, title, author, pages, readCheck) {
@@ -66,7 +90,7 @@ class Book {
 }
 
 function addToLibrary(id, title, author, pages, readCheck) {
-	let newBook = new Book(Number(id), title, author, pages, readCheck);
+	let newBook = new Book(id, title, author, pages, readCheck);
 	library.push(newBook);
 
 }
@@ -84,7 +108,8 @@ function displayBooks(){
 	library.forEach((book) => {
 		const div = document.createElement("div");
 		div.classList.add("book");
-	
+		div.dataset.bookId = book.id;
+
 		const btnText = book.readCheck ? 'Read' : 'UnRead';
 		const btnClass = book.readCheck ? 'read' : 'unread';
 		
@@ -109,6 +134,7 @@ function loadLibraryFromLocalStorage(){
 	}
 }
 
+year.innerHTML = new Date().getFullYear();
 
 // initial display
 document.addEventListener("DOMContentLoaded", loadLibraryFromLocalStorage);
