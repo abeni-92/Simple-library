@@ -3,15 +3,29 @@ const modal = document.querySelector(".modal");
 const books = document.getElementById("books");
 const form = document.querySelector("form");
 const year = document.getElementById("year");
+const login = document.getElementById("login");
+
+// window.onload = function () {
+//     google.accounts.id.initialize({
+//       client_id: 'YOUR_GOOGLE_CLIENT_ID',
+//       callback: handleCredentialResponse
+//     });
+//     google.accounts.id.prompt();
+//   };
+
+login.addEventListener("click", () => {
+	console.log("start");
+
+});
 
 // modal elements
 const title = document.getElementById("title");
 const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const readCheck = document.getElementById("readCheck");
-let id = 0;
+// let id = 0;
 
-let library = [];
+let library = getLibraryLocalStorage();
 
 // open Modal when "Add Book" button is clicked
 addBook.addEventListener("click", () => {
@@ -34,11 +48,11 @@ document.addEventListener("keydown", (e) => {
 // add Book to Library
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
+	let id = getUniqueId();
 	let titleVal = title.value;
 	let authorVal = author.value;
 	let pagesVal = pages.value;
 	let readCheckVal = readCheck.checked;
-	id++; 
 	
 	addToLibrary(id, titleVal, authorVal, pagesVal, readCheckVal);
 	saveLibraryToLocalStorage();
@@ -55,7 +69,6 @@ books.addEventListener("click", (e) => {
 		const bookDiv = target.closest(".book");
 		const bookId = bookDiv.dataset.bookId;
 		const book = library.find((book) => book.id == bookId);
-		console.log(book);
 		book.readCheck == true ? book.readCheck = false : book.readCheck = true;
 		saveLibraryToLocalStorage();
 	}
@@ -63,17 +76,9 @@ books.addEventListener("click", (e) => {
 		const bookDiv = target.closest(".book");
 		const bookId = bookDiv.dataset.bookId;
 		const libraryData = JSON.parse(localStorage.getItem("library"));
-		// const bookIndex = libraryData.findIndex((book) => book.id === bookId);
-		// if (bookIndex !== -1) {
-		// 	// Remove the book from the library array
-		// 	libraryData.splice(bookIndex, 1);
 		
 		library = libraryData.filter((book) => book.id != bookId);
-		console.log(library);
 		saveLibraryToLocalStorage();
-		// localStorage.setItem("library", JSON.stringify(libraryData));
-
-	//   }
 	}
 
 	loadLibraryFromLocalStorage();
@@ -131,9 +136,28 @@ function loadLibraryFromLocalStorage(){
 	if(libraryData) {
 		library = JSON.parse(libraryData);
 		displayBooks();
-	}
+	} 
 }
 
+function getUniqueId() {
+	let id = 0;
+	const libraryData = localStorage.getItem('library');
+	if (libraryData) {
+	  const books = JSON.parse(libraryData);
+	  id = books.length > 0 ? books[books.length - 1].id + 1 : 0;
+	}
+	return id;
+}
+
+function getLibraryLocalStorage() {
+	const storedLibrary = localStorage.getItem("library");
+	if (storedLibrary) {
+	  return JSON.parse(storedLibrary);
+	} else {
+	  return [];
+	}
+}
+  
 year.innerHTML = new Date().getFullYear();
 
 // initial display

@@ -13,7 +13,7 @@
 	
 	<nav>
 		<h1>Library</h1>
-		<a class="add">log in</a>
+		<a class="add" id="login">log in</a>
 	</nav>
 	<center><a id="add" class="add"><span><i class="fa-sharp fa-solid fa-plus"></i></span> Add</a></center>
 	<div id="myModal" class="modal">
@@ -23,7 +23,7 @@
 			<form action="#" method="get">
 				<input type="text" name="title" id="title" required placeholder="Title">
 				<input type="text" name="author" id="author" required placeholder="Author">
-				<input type="number" name="pages" id="pages" required placeholder="Pages">
+				<input type="number" name="pages" id="pages" max="10000" required placeholder="Pages">
 				<div class="check"><label for="readCheck">Have you read it?</label><input type="checkbox" name="readCheck" id="readCheck"></div>	
 				<button class="submit">submit</button>	
 			</form>
