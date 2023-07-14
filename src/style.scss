@@ -1,13 +1,20 @@
+
+
 *, ::after, ::before{
 	box-sizing: border-box;
 }
 html {
 	scroll-behavior: smooth;
 	font-family: 'Poppins', sans-serif;
-	margin: 0;
-	padding: 0;
 	background-color: rgba(0,0,0,0.06);
 }
+body {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	animation: fadeIn 1s ease-in-out;
+}
+
 nav {
 	position: sticky;
 	top: 0;
@@ -15,38 +22,40 @@ nav {
 	background-color: #fafafa;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	width: 100%;
 	height: 10vh;
-	padding: 20px;
-	margin-bottom: 20px;
+	padding: 20px 40px;
+	margin-bottom: 40px;
+	h1 {
+		font-size: 42px;
+		font-weight: 600;
+	}
 }
+
 a {
 	text-decoration: none;
-}
-/* nav a {
-	position: relative;
-	background-color:rgb(190, 212, 233);
-	border: 1px solid rgb(190, 212, 233);
-	border-radius: 6px;
-} */
-
-h1 {
-	font-size: 42px;
-	font-weight: 600;
-	text-align: center;
-}
-.add{
-	font-size: 28px;
-	font-weight: 600;
-	text-align: center;
-	padding: 10px 15px;
 	cursor: pointer;
+	color: #eee;
+	padding: 0;
+	margin: 0;
 }
-.add:hover{
-	background-color: #ccc;
+
+.add {	
+	font-size: 32px;
+	font-weight: 700;
+	padding: 10px ;
+	background-color: #2c5783;
 	border-radius: 8px;
+	border: 1px solid #6789ab;
 }
+
+.add:hover {
+	background-color: #5589c0;
+	box-shadow: 6px 6px 8px #2c5783;
+	color: #fff;
+}
+
 #books {
 	display: flex;
 	justify-content: start;
@@ -54,24 +63,56 @@ h1 {
 	padding: 20px 40px;
 	flex-wrap: wrap;
 	margin-bottom: 100px;
+	animation: fadeIn 0.3s ease-in-out;
+
+	.book {
+		width: 27%;
+		padding: 20px 20px;
+		margin: 20px 20px;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		border: 1px solid #ccc;
+		border-radius: 15px;
+		box-shadow: #ae6767e5;
+		
+		p {
+			font-size: 20px;
+			/* font-weight: 500; */
+		}
+	}
+	
+	.unread {
+		background-color: rgb(33, 106, 155);
+		border: 1px solid rgb(33, 106, 155);
+	}
+	.unread:hover {
+		background-color: rgb(31, 118, 175);
+		border: 1px solid rgb(31, 118, 175);
+		box-shadow: 2px 4px 4px rgb(31, 118, 175);;
+	}
+	.remove {
+		background-color: rgb(218, 58, 58);
+		border: 1px solid rgb(218, 58, 58);
+	}
+	.remove:hover {
+		background-color: rgb(218, 75, 75);
+		border: 1px solid rgb(218, 75, 75);
+		box-shadow: 2px 4px 4px rgb(150, 24, 24);
+	}
 }
-#books .book {
-	width: 27%;
-	padding: 20px 20px;
-	margin: 20px 20px;
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	border: 1px solid #ccc;
-	border-radius: 15px;
-	box-shadow: #ae6767e5;
+
+.read, .submit {
+	background-color: rgb(120, 209, 120);
+	border: 1px solid rgb(120, 209, 120);
 }
-#books .book p {
-	font-size: 20px;
-	/* font-weight: 500; */
+.read:hover, .submit:hover{
+	background-color: rgb(84, 168, 84);
+	box-shadow: 2px 4px 4px rgb(71, 160, 71);
 }
+
 button{
 	font-size: 1.5rem;
 	width: 100%;
@@ -80,28 +121,6 @@ button{
 	border-radius: 8px;
 	cursor: pointer;
 	transition: 0.3s ease;
-}
-#books .read, .submit {
-	background-color: rgb(120, 209, 120);
-	border: 1px solid rgb(120, 209, 120);
-}
-#books .read:hover, .submit:hover{
-	background-color: rgb(95, 195, 95);
-}
-.unread {
-	background-color: rgb(235, 110, 110);
-	border: 1px solid rgb(235, 110, 110);
-}
-.unread:hover {
-	background-color: rgb(218, 58, 58);
-	border: 1px solid rgb(218, 58, 58);
-}
-#books .remove {
-	background-color:#ccc;
-	border: 1px solid #ccc;
-}
-#books .remove:hover {
-	background-color:#d7cfcf;
 }
 
 .modal {
@@ -130,7 +149,7 @@ button{
 	align-items: center;
 	justify-content: space-between;
 	border-radius: 12px;
-	transition: 0.2s;
+	animation: fadeIn 0.4s ease-in-out;
 	/* z-index: 2; */
 }
 .modal-content input {
@@ -148,6 +167,7 @@ button{
 	font-weight: bold;
 	margin-right: 8px;
 }
+
 input[type="checkbox"]{
 	width: 1.1rem;
 	height: 1.1rem;
@@ -164,14 +184,24 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-footer i {
-	font-size: 22px;
-	padding: 12px;
-	color: white
-}
-footer i:hover {
-	color: rgb(102, 188, 139);
+
+	i {
+		font-size: 22px;
+		padding: 12px;
+		color: white
+	}
+
+	i:hover {
+		color: rgb(102, 188, 139);
+	}
+	.github {
+		margin-left: 10px;
+		color: #eee;
+	}
+	.github:hover {
+		padding: 6px;
+		box-shadow: 2px 2px 2px 2px #a164a1;
+	}
 }
 
 /* media queries */
@@ -204,5 +234,14 @@ footer i:hover {
 	}
 	footer {
 		text-align: start;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
