@@ -184,24 +184,17 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	i {
+	
+	a {
 		font-size: 22px;
-		padding: 12px;
-		color: white
-	}
-
-	i:hover {
-		color: rgb(102, 188, 139);
-	}
-	.github {
 		margin-left: 10px;
 		color: #eee;
 	}
-	.github:hover {
-		padding: 6px;
-		box-shadow: 2px 2px 2px 2px #a164a1;
+
+	a:hover {
+		transform: scale(1.4);
 	}
+	
 }
 
 /* media queries */

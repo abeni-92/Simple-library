@@ -1,12 +1,11 @@
 import './style.css';
 
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { faAdd } from "@fortawesome/free-solid-svg-icons/faAdd";
-import { fa1} from "@fortawesome/free-solid-svg-icons/fa1";
+// import { fa1} from "@fortawesome/free-solid-svg-icons/fa1";
+import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
 
-library.add(faAdd);
-library.add(fa1);
+library.add(faAdd, faGithub);
 dom.watch();
 
 const nav = document.createElement('nav');
@@ -37,7 +36,7 @@ bookSection.setAttribute('id', 'books');
 // <i class="fa-brands fa-github"></i>
 const footer = document.createElement('footer');
 footer.innerHTML = `<p>Simple Library &copy; Abenezer Tesfaye <span id="year"></span></p>
-				    <a href="https://github.com/abeni-92/Simple-library" target="_blank"><span class="github">github</span></a>`;
+				    <a href="https://github.com/abeni-92/Simple-library" target="_blank"><i class="fa-brands fa-github "></i></a>`;
 
 const year = footer.querySelector('span');
 year.textContent = new Date().getFullYear();
@@ -169,6 +168,31 @@ function getBooks() {
 
 
 document.addEventListener('DOMContentLoaded', displayBooks);
+
+
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD8WZZK03eq_BWg7ecitkeuCo15iRhGyzM",
+  authDomain: "js-library-c7b22.firebaseapp.com",
+  projectId: "js-library-c7b22",
+  storageBucket: "js-library-c7b22.appspot.com",
+  messagingSenderId: "23969824345",
+  appId: "1:23969824345:web:1cfdc21991c9c896cabb48",
+  measurementId: "G-27TS2KSYJW"
+};
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 login.addEventListener('click', (e) => {
 	

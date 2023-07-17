@@ -186,21 +186,13 @@ footer {
   justify-content: center;
   align-items: center;
 }
-footer i {
+footer a {
   font-size: 22px;
-  padding: 12px;
-  color: white;
-}
-footer i:hover {
-  color: rgb(102, 188, 139);
-}
-footer .github {
   margin-left: 10px;
   color: #eee;
 }
-footer .github:hover {
-  padding: 6px;
-  box-shadow: 2px 2px 2px 2px #a164a1;
+footer a:hover {
+  transform: scale(1.4);
 }
 
 /* media queries */
