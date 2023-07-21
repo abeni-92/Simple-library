@@ -1,5 +1,4 @@
 
-
 *, ::after, ::before{
 	box-sizing: border-box;
 }
@@ -104,6 +103,10 @@ a {
 	}
 }
 
+.delete {
+	animation: fadeOut 1.5s ease-in-out;
+}
+
 .read, .submit {
 	background-color: rgb(120, 209, 120);
 	border: 1px solid rgb(120, 209, 120);
@@ -189,6 +192,7 @@ footer {
 		font-size: 22px;
 		margin-left: 10px;
 		color: #eee;
+		transition: transform 0.3s ease-in-out;
 	}
 
 	a:hover {
@@ -235,6 +239,17 @@ footer {
 		opacity: 0;
 	}
 	100% {
+		opacity: 1; 
+	} 
+}
+
+@keyframes fadeOut {
+	0% {
 		opacity: 1;
+		transform: translateY(0%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-100%);
 	}
 }
