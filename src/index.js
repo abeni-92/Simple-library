@@ -174,29 +174,3 @@ document.addEventListener('DOMContentLoaded', displayBooks);
 
 
 
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyD8WZZK03eq_BWg7ecitkeuCo15iRhGyzM",
-//   authDomain: "js-library-c7b22.firebaseapp.com",
-//   projectId: "js-library-c7b22",
-//   storageBucket: "js-library-c7b22.appspot.com",
-//   messagingSenderId: "23969824345",
-//   appId: "1:23969824345:web:1cfdc21991c9c896cabb48",
-//   measurementId: "G-27TS2KSYJW"
-// };
-
-// // Initialize Firebase
-// // const app = initializeApp(firebaseConfig);
-// // const analytics = getAnalytics(app);
-
-// login.addEventListener('click', (e) => {
-	
-// })
